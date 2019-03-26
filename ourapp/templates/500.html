@@ -1,0 +1,19 @@
+{% extends 'ourapp/base.html' %}
+{% block body %}
+    <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Server Error</li>
+    </ol>
+  </nav>
+  <div class="jumbotron">
+    <h1 class="display-4">Server Error</h1>
+    <p class="lead">Sorry we could not display the resource you requested for because of some server 
+        problems, were are sorry but we are working on it!</p>
+        <div class="alert alert-primary" role="alert">
+          Perhaps you may go <a href="{% url 'ourapp:home' %}">Home Pages</a>
+        </div>
+    <!-- <hr class="my-4"> -->
+    <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a> -->
+  </div>
+{% endblock %}

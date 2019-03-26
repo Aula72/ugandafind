@@ -1,0 +1,42 @@
+{% extends 'ourapp/base.html' %}
+{% block title %}
+    Article Details | UgandaFind
+{% endblock %}
+
+{% block body %}
+<div class="col-md-2"></div>
+<div class="col-md-8" style="text-align: justify;" >
+{% for article in articles %}
+{% if request.user.id is not None%}
+<p><a href="{% url 'ourapp:edit_article' article.id %}" class="btn btn-primary">Edit This Article</a></p>
+{% endif %}
+    <!-- <h3>UgandaFind | Article| {{ article.article_type.value }}</h3> -->
+    <h1>{{ article.article_title | upper }}</h1>
+    {{ article.article_body | safe }}
+    {% if article.user.get_full_name %}
+        Author: {{ article.user.get_full_name }} | Created On: 
+    {% endif %}
+    {{article.timestamp}}
+    {% if article.article_references is empty or article.article_references == 'no references' %}
+
+    {% else%}
+    <h3>References</h3>
+    {{ article.article_references }}
+    {% endif %}
+    {% if request.user.id is not None%}
+    <p><a href="{% url 'ourapp:edit_article' article.id %}" class="btn btn-primary">Edit This Article</a></p>
+    {% endif %}
+</div>
+<div class="col-md-2">
+    {% if new_art|length > 0 %}
+    <h3>Related articles</h3>
+        {% for art in new_art %}            
+            {% if art.id is not article.id %}
+                <p style="font-size:15px; font-style: italic;"><a href="{% url 'ourapp:details' art.id %}">{{ art.article_title }}</a></p>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}
+

@@ -1,0 +1,19 @@
+body{
+    background-color: blue;
+    /* background: blue url("../imgs/100.png") !important; */
+    color:black !important;
+
+}
+.navbar {
+  border-radius: 0%;
+}
+
+.active{
+  color: blue;
+}
+
+.pagination{
+  text-align: center;
+  background-color: blue;
+}
+

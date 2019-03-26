@@ -1,0 +1,11 @@
+{% extends 'ourapp/base.html'%}
+
+{% if posts in not none %}
+    {% for art in posts %}
+        {{ art.article_body }}
+    {% endfor %}
+{% else %}
+<div>
+    No Post Found..
+</div>
+{% endif %}

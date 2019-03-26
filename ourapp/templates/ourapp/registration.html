@@ -1,0 +1,22 @@
+{% extends 'ourapp/base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+ Create Account
+{% endblock %}
+{% block body %}
+<div class="col-md-2"></div>
+<div class="col-md-8">
+        {% bootstrap_messages %}
+        <form action="{% url 'ourapp:register' %}" method="post" class="form">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          {% buttons %}
+            <button type="submit" class="btn btn-primary">
+              Register
+            </button>
+          {% endbuttons %}
+        </form>
+</dvi>
+<div class="col-md-2"></div>
+
+{% endblock %}

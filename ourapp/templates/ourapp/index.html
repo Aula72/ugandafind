@@ -1,0 +1,39 @@
+{% extends 'ourapp/base.html' %}
+{% block title%}
+    Articles | UgandaFind
+{% endblock %}
+{% block body %}
+<div class="col-md-2"></div>
+<div class="col-md-8">
+{% if request.user.id != None %}
+    
+<div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <a href="{% url 'ourapp:new_article' %}" class="btn btn-primary" style="position:absolute;">Add New Article</a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="margin-right:0%">
+                <a href="{% url 'ourapp:my_articles' request.user.id %}" class="btn btn-primary">View Your Articles</a>
+        </div>
+    </div>
+{% endif %}
+<h1>These are the available Articles</h1>
+
+{% if all_article is not none %}
+
+    
+    {% for article in all_article %}
+    <ul class="list-group">
+    <li class="list-group-item"><a href="{% url 'ourapp:details' pk=article.id %}">{{ article.article_title}}</a></li>
+    </ul>
+    {% endfor %}
+
+{% else %}
+<h3>No available articles</h3>
+{% endif %}
+</div>
+<div class="col-md-2"></div>
+{% endblock %}
+
+{% block other_content %}
+    
+{% endblock%}

@@ -1,0 +1,41 @@
+{% extends 'ourapp/base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+    New Article
+{% endblock %}
+
+{% block body %}
+
+<div class="form-group">
+<form action="{% url 'ourapp:new_article' %}" method="post" name="form">
+    {% csrf_token %}
+    <div class="form-control">
+        <input type="hidden" name="user" id="id_user" value="{{ request.user.username }}">
+    </div>
+    <div class="form-control">
+        Article Title <input type="text" name="article_title" id="id_article_title">
+    </div>
+    <div class="form-control">
+        Article Type <select name="article_type" id="">
+            <option value="P">Political History</option>
+            <option value="H">Healthy</option>
+            <option value="E">Education</option>
+            <option value="I">Economics</option>
+            <option value="G">Geography</option>
+            <option value="S">Sports and Games</option>
+            <option value="T">Tourism</option>
+            <option value="A">Agriculture</option>
+            <option value="R">Religion</option>
+            <option value="C">Culture</option>
+        </select>
+    </div>
+    <div class="form-control">
+        Article Body <textarea name="article_body" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div class="form-control">
+        Article References <input type="text" name="article_references" id="">
+    </div>
+    <input type="submit" value="Add Article" >
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'ourapp/base.html' %}
+{% block title %}
+
+{% endblock %}
+{% block body %}
+    <form class="form-group" action="" method="POST">
+        {% csrf_token %}
+        {% include 'ourapp/form-template.html' %}
+        <div>
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

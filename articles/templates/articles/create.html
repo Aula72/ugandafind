@@ -1,0 +1,30 @@
+<div class="content-form">
+    <form action="" method="post" role="form">
+        {% csrf_token %}
+        {% if content_view_in_action %}
+            {% for e in form.non_field_errors %}
+                <div class="alert alert-danger alert-dismissable">
+                    {{ e }}
+                    {{ forms }}
+                    <a class="panel-close close" data-dismiss="alert">×</a>
+                </div>
+            {% endfor %}
+        {% endif %}
+        .....
+        </form>
+    </div>
+    
+    <div class="refer-form">
+    <form action="" method="post" role="form">
+        {% csrf_token %}
+        {% if not content_view_in_action %}
+            {% for e in form.non_field_errors %}
+                <div class="alert alert-danger alert-dismissable">
+                    {{ e }}
+                    <a class="panel-close close" data-dismiss="alert">×</a>
+                </div>
+            {% endfor %}
+        {% endif %}
+       ....
+      </form>
+</div>

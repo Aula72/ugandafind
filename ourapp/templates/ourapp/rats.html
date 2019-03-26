@@ -1,0 +1,18 @@
+{% extends 'ourapp/base.html' %}
+{% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+{% load bootstrap3 %}
+{% block title %}
+    New Article
+{% endblock %}
+{% block body %}
+<form action="{% url 'ourapp:easy' %}" method="post">
+    {% csrf_token %}
+    {{ myform.media }}
+    {{ form.as_p }}
+    <!-- <input type="hidden" name="user" id="id_user" value="{{ request.user.id }}" required> -->
+    <input type="submit" value="Add Article">
+</form>
+
+{% endblock %}

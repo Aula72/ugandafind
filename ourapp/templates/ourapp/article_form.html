@@ -1,0 +1,23 @@
+{% extends 'ourapp/base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+
+{% endblock %}
+{% block body %}
+<div class="col-md-2"></div>
+<dvi class="col-md-8">
+        {% bootstrap_messages %}
+        {{ request.user }}
+        <form action="{% url 'login' %}" method="post" class="form">
+          {% csrf_token %}
+          {% bootstrap_form form %} 
+          {% buttons %}
+            <button type="submit" class="btn btn-primary">
+              Add Article
+            </button>
+          {% endbuttons %}
+        </form>
+</dvi>
+<div class="col-md-2"></div>
+
+{% endblock %}

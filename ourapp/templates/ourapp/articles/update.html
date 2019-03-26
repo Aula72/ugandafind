@@ -1,0 +1,14 @@
+{% extends 'ourapp/base.html' %}
+{% block title %}
+{% load bootstrap3 %}
+
+{% endblock %}
+{% block body %} 
+    <form action="{% url 'ourapp:edit_article' art_id=1 %}" method="post">
+            {% csrf_token %}
+            {% bootstrap_messages %}
+            {% bootstrap_form form %}
+            
+            <input type="submit" value="Update Article" class="btn btn-success">
+    </form>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'ourapp/base.html' %}
+
+{% block body %}
+        
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+        
+                {% if articles|length == 1 %}
+        <h3 class="text">There is {{ articles|length}} result for "{{q}}"</h3>
+                {% else %}
+                <h3 class="text">There are {{ articles|length}} results for "{{q}}"</h3>
+                {% endif %}
+        {% if articles|length > 0 %}
+            {% for article in articles %}
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="{% url 'ourapp:details' article.id %}">
+                       '{{q}}' in  '{{ article.article_title }}'
+                    </a>
+                </li>        
+            </ul>
+            {% endfor %}
+        <ul class="pagination">
+                <li>
+                    {% if articles.has_previous %}
+                    <a href="?page={{ articles.previous_page_number }}">&laquo;</a>
+                    
+                    {% endif %}
+                </li>
+                {% for num in articles.paginator.page_range %}
+            
+                    {% if aricles.number == num %}
+                    <li><strong>{{ num }}</strong></li>
+                    {% elif num > articles.number|add:'-2' and num < articles.number|add:'2' %}
+                        
+                        <li><a href="#">{{ num }}</a></li>
+                    {% endif %}
+                {% endfor %} 
+                <li>
+                    {% if articles.has_next %}
+                    <a href="?page={{ articles.next_page_number }}">&raquo;</a>
+                    {% endif %}
+                </li>
+            </ul>
+        {% else %}
+        <h1>No articles found....</h1>
+        <div class="jumbotron">
+             
+            <h1>No results</h1>
+            
+            <p class="lead">
+               Common reasons may include
+            </p>
+            
+            <ul class="list-group">
+                <li class="list-group-item">Wrong Spelling</li>
+                <li class="list-group-item">Article or Source not yet existing on the system</li>
+                <li class="list-group-item">Article not yet approved.</li>
+                <li class="list-group-item">Thanks</li>
+            </ul>
+            <p class="lead">You may search other content..</p>
+            
+        </div>
+        {% endif %}
+        
+        
+        </div>
+        <div class="col-md-2"></div>
+{% endblock %}
+
