@@ -8,13 +8,21 @@
           {% csrf_token %}
           {% bootstrap_form form %}
           {% buttons %}
+          <div class="text-center">
+            <input type="checkbox" name="remember me" value="Keep Me Logged in" id="">&nbsp;&nbsp;&nbsp;Remember Me
+          </div>
+          <div class="text-center">
+            <br> 
             <button type="submit" class="btn btn-primary">
               Login
             </button>
+          </div>
           {% endbuttons %}
         </form>
-        <p><a href="{% url 'ourapp:reset-password' %}">Forgot Password</a></p>
-        <p><a href="{% url 'ourapp:register' %}">Don't Have An Account</a></p>
+        <div class="text-center">
+          <p><a href="{% url 'ourapp:reset-password' %}">Forgot Password</a></p>
+          <p><a href="{% url 'ourapp:register' %}">Don't Have An Account</a></p>
+        </div>
 </dvi>
 <div class="col-md-3"></div>
 {% endblock %}
